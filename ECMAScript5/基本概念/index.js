@@ -51,3 +51,8 @@ console.log(Number({}))
 console.log(Number('1.3'))
 console.log(Number("false"))
 console.log(Number(""))
+
+var a = [1];
+console.log(a.toString())
+
+console.log(String(a))
