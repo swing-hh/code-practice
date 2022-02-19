@@ -1,2 +1,2 @@
-# js-practice
-日常练习js
+# fe-practice
+日常练习
