@@ -4,44 +4,32 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=a, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+
+  </style>
 </head>
 
 <body>
-  <a href=""></a>
-  <audio>
-    <source src="music.mp3">
-    <source src="music.ogg">
-    <source src="music.wav">
-  </audio>
-  <audio src="music.mp3" width="100" width="30"></audio>
+  <button id="play">播放</button>
+  <button id="pause">暂停</button>
+  <audio src="./dida.mp3" id="music"></audio>
+
+  <script>
+    const music = document.getElementById('music')
+    const playBtn = document.getElementById('play')
+    const pauseBtn = document.getElementById('pause')
+
+    playBtn.onclick = () => {
+      music.play()
+    }
+
+    pauseBtn.onclick = () => {
+      music.pause()
+    }
+
+  </script>
 </body>
-<script>
-  // 获取音频对象
-  let m = document.getElementById('music');
-  //加载
-  m.load();
-  //播放
-  m.play();
-  //暂停
-  m.pause();
-  // 跳转指定播放时间
-  m.fastSeek(20);
-  // 获取和设置已播放的时间
-  m.currentTime
-  //自动播放
-  m.autoplay = true;
-  //循环播放
-  m.loop = true;
-  //显示控制面板
-  m.controls = true;
-  //静音
-  m.muted = true;
-  //是否暂停
-  m.paused
-  // 调节音量，0（无声）~1（最大声）之间
-  m.volume = 0.1;
-</script>
 
 </html>
