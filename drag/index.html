@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    .main {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .left {
+      width: 300px;
+      height: 500px;
+      border: 1px solid lightseagreen;
+      margin-right: 10px;
+      /* background-color: green; */
+    }
+
+    .right {
+      width: 300px;
+      height: 500px;
+      border: 1px solid lightseagreen;
+      text-align: center;
+      padding: 1px;
+      /* background: red; */
+    }
+
+    .txt {
+      border: 1px solid gray;
+      margin: 1px;
+      padding: 5px;
+      cursor: move;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="main">
+    <div class="left" id="left">
+      <div class="txt-show">左边区域</div>
+      <div class="dargable txt" id="txt1" draggable="true">
+        可移动的文字一
+      </div>
+      <div class="dargable txt" id="txt2" draggable="true">
+        可移动的文字二
+      </div>
+      <div class="dargable txt" id="txt3" draggable="true">
+        可移动的文字三
+      </div>
+      <div class="dargable txt" id="txt4" draggable="true">
+        可移动的文字四
+      </div>
+      <div class="dargable txt" id="txt5" draggable="true">
+        可移动的文字五
+      </div>
+    </div>
+    <div class="right" id="right">
+      <div class="txt-show">右边区域</div>
+    </div>
+  </main>
+  <script>
+    let left = document.getElementById('left')
+    let target = document.getElementById('right')
+    left.addEventListener('dragstart', (event) => {
+      event.dataTransfer.setData('Text', event.target.id)
+      console.error(event.target.id);
+      console.log('drag开始拖动啦1')
+    })
+    target.addEventListener('dragstart', (event) => {
+      event.dataTransfer.setData('Text', event.target.id)
+    })
+    left.addEventListener('drag', (event) => {
+      console.log('drag正在拖啦2')
+    })
+    left.addEventListener('dragend', (event) => {
+      console.log('dragend拖动结束啦7')
+    })
+    target.addEventListener('dragenter', (event) => {
+      console.log('dragenter进入区域啦3')
+    })
+    target.addEventListener('dragover', (event) => {
+      event.preventDefault()
+      console.log('dragover在区域内拖动啦4')
+    })
+    left.addEventListener('dragover', (event) => {
+      event.preventDefault()
+    })
+    target.addEventListener('dragleave', (event) => {
+      console.log('dragleave离开拖动区域啦5')
+    })
+    target.addEventListener('drop', (event) => {
+      let drag_id = event.dataTransfer.getData('text')
+      target.appendChild(document.getElementById(drag_id))
+    })
+    left.addEventListener('drop', (event) => {
+      let drag_id = event.dataTransfer.getData('text')
+      left.appendChild(document.getElementById(drag_id))
+    })
+  </script>
+</body>
+
+</html>
